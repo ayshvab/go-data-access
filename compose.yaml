@@ -1,0 +1,14 @@
+services:
+  mysql:
+    image: mysql:8.0
+    volumes:
+      - mysql-data:/var/mysql
+      - ./create-tables.sql:/docker-entrypoint-initdb.d/create-tables.sql
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: recordings
+
+volumes:
+  mysql-data:
